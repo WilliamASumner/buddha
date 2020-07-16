@@ -125,50 +125,6 @@ pub fn hits_to_col_lin(val: u32, max: u32) -> u8 {
     ((val as f64 / max as f64) * 255.) as u8
 }
 
-/*pub struct Orbit {
-    z: Complex,
-    c: Complex,
-    iters: u32,
-    max_hits: u32,
-}
-
-impl Orbit {
-    pub fn new(start: Complex) -> Orbit {
-        Orbit {
-            z: Complex::new(0.,0.),
-            c: start,
-            iters: 0,
-            max_hits: 0,
-        }
-    }
-
-    pub fn calc_orbit(&self,
-                      max_iters: u32,
-                      hit_buff: &mut Array::<u32,_>, // TODO fix this
-                      hit_seq: &mut Vec<(u32,u32)>) -> (u32,u32) {
-
-        while !self.c.cullable() && self.z.magsq() < 4. && self.iters < max_iters  {
-            self.z.square().add(&self.c); // z = z^2 + c
-
-            let (x,y) = self.z.map_to_pixel();
-            if x >= WIDTH as u32|| y >= HEIGHT as u32 {
-                continue; // interesting choice here... stay or leave?
-            }
-
-            // Painting
-            let val = hit_buff[[x as usize, y as usize]] + 1;
-            if val > self.max_hits {
-                self.max_hits = val;
-            }
-
-            hit_buff[[x as usize, y as usize]] = val;
-
-            self.iters += 1;
-        }
-        (self.iters,self.max_hits)
-    }
-} */
-
 /* Consts */
 // Image bounds
 const WIDTH: f64 = 1000.;
@@ -189,8 +145,8 @@ const GRID_CELL_HEIGHT: usize = (HEIGHT / GRID_RES as f64) as usize;
 fn main() {
     // Base mandelrot extends from x = -2 to 0.5
     //                             y = -1 to 1
-    let mut sample_count: u64 = 2_000_000;
-    let max_iters = 10000;
+    let sample_count: u64 = 20_000_000;
+    let max_iters = 1000;
     let min_iters = max_iters/3;
     let mut max_hits = 0;
     let mut iters = 0;
@@ -238,14 +194,12 @@ fn main() {
 
     let mut rng = thread_rng();
     let mut c: Complex = gen_sample_from_list(&mut rng,&sample_list);
-    //let mut c: Complex = gen_sample(&mut rng);
     println!("Starting sampling");
     let sample_start = Instant::now();
 
     print!("0%\tdone");
     for s in 0..sample_count{
         let mut z = Complex::new(0.,0.);
-        c = mutate_from_list(&mut rng, c, iters as f64/max_iters as f64, &sample_list);
         iters = 0;
 
         while  z.magsq() < 4. && iters < max_iters  {
@@ -272,11 +226,13 @@ fn main() {
         }
 
         if s % 100 == 0 {
-            print!("\r{:.3}%\tdone",(s as f64 / sample_count as f64));
+            print!("\r{:3.1}%\tdone",(s as f64 / sample_count as f64)*100.);
         }
+
+        c = gen_sample(&mut rng);
     }
 
-    println!("Finished sampling with {} seconds.\nMapping values.",sample_start.elapsed().as_secs_f32());
+    println!("\nFinished sampling with {} seconds.\nMapping values.",sample_start.elapsed().as_secs_f32());
 
     for (x, y, pixel) in img_buff.enumerate_pixels_mut() {
         let mapped_val: u8 =
