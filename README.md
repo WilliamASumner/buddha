@@ -34,5 +34,5 @@ I'm not aware of any official term for this technique, but I think the name orbi
 A lot of the ideas mentioned here I found from other sources, be sure to read through some of them if my explanations weren't enough.
 1. [Melinda Green's Site](http://superliminal.com/fractals/bbrot/bbrot.htm)
 2. [softologyblog](https://softologyblog.wordpress.com/2011/06/26/buddhabrot-fractals/)
-3. [Alexander Boswell's Site](http://www.steckles.com/buddha/)More to come later...
+3. [Alexander Boswell's Site](http://www.steckles.com/buddha/)
 4. [Cupe's amazing post on generating a hi-res buddhabrot](https://erleuchtet.org/2010/07/ridiculously-large-buddhabrot.html)
