@@ -1,6 +1,6 @@
 # Buddhabrot
 <p align="center">
-  <img alt="Uh oh, the example picture didn't load" src="https://github.com/WilliamASumner/buddha/raw/master/examples/fractal-huge.png" />
+  <img alt="Uh oh, the example picture didn't load" src="https://github.com/WilliamASumner/buddha/raw/master/examples/fractal.png" />
 </p>
 
 ## Running it
