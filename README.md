@@ -36,5 +36,5 @@ A lot of the ideas mentioned here I found from other sources, be sure to read th
 2. [softologyblog](https://softologyblog.wordpress.com/2011/06/26/buddhabrot-fractals/)
 3. [Alexander Boswell's Site](http://www.steckles.com/buddha/)
 4. [Cupe's amazing post on generating a hi-res Buddhabrot](https://erleuchtet.org/2010/07/ridiculously-large-buddhabrot.html)
-5. [Numberphile's Video Introduction to the Mandelbrot Set] (https://www.youtube.com/watch?v=NGMRB4O922I)
-6. [Numberphile's Video on Mandelbrot Orbits] (https://www.youtube.com/watch?v=FFftmWSzgmk)
+5. [Numberphile's Video Introduction to the Mandelbrot Set](https://www.youtube.com/watch?v=NGMRB4O922I)
+6. [Numberphile's Video on Mandelbrot Orbits](https://www.youtube.com/watch?v=FFftmWSzgmk)
